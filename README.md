@@ -1,6 +1,6 @@
-## Spring Boot Swagger POC
+## Micro1
 
-Simple project that auto-generates Swagger API specification based on annotated source
+Simple spring boot microservice that exposes prometheus metrics
 
 Run the spring boot app:
 
@@ -13,4 +13,3 @@ gradle build
 docker build -t registry.gitlab.com/amarinkovic/micro1 .
 docker run -it -d --name micro1 -p 8080:8080 registry.gitlab.com/amarinkovic/micro1:latest
 ```
-
