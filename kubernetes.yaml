@@ -8,7 +8,12 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
+    name: micro1app
     nodePort: 30002
+  - protocol: TCP
+    port: 8081
+    name: micro1actuator
+    nodePort: 30003
   type: NodePort
 ---
 apiVersion: apps/v1
