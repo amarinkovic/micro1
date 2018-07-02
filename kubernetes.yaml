@@ -1,1 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: micro1
+spec:
+  selector:
+    app: micro1
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 30002
+  type: NodePort
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro1
+spec:
+  selector:
+      matchLabels:
+        app: micro1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: micro1
+    spec:
+      containers:
+        - name: websocket1
+          image: registry.gitlab.com/amarinkovic/micro1:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              name: micro1app
+            - containerPort: 8081
+              name: micro1actuator
+            
