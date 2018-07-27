@@ -1,6 +1,6 @@
 management:
     server:
-        port: 8081
+        port: 9081
     metrics:
         export:
           prometheus:

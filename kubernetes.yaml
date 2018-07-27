@@ -11,7 +11,7 @@ spec:
     name: micro1app
     nodePort: 30002
   - protocol: TCP
-    port: 8081
+    port: 9081
     name: micro1actuator
     nodePort: 30003
   type: NodePort
@@ -33,10 +33,10 @@ spec:
       containers:
         - name: websocket1
           image: registry.gitlab.com/amarinkovic/micro1:latest
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: micro1app
-            - containerPort: 8081
+            - containerPort: 9081
               name: micro1actuator
             
