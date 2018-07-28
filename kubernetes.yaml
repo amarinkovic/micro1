@@ -33,7 +33,7 @@ spec:
       containers:
         - name: websocket1
           image: registry.gitlab.com/amarinkovic/micro1:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
               name: micro1app
