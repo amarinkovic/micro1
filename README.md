@@ -17,3 +17,8 @@ To build container with jib, use:
 ```shell
 ./gradlew jibDockerBuild
 ```
+
+Deploy to kubernetes cluster, i.e. minikube:
+```shell
+kubectl create -f kubernetes
+```
