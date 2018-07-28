@@ -1,28 +1,51 @@
-image: gradle:alpine
+stages:
+  - build
+#  - test
+  - publish
 
 variables:
+  DOCKER_DRIVER: overlay
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+image: gradle:alpine
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-build:
+build_latest:
   stage: build
   script: gradle --build-cache assemble
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: push
+    # policy: push
     paths:
       - build
       - .gradle
+  only:
+    - master
 
-test:
-  stage: test
-  script: gradle check
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
+# test:
+#   stage: test
+#   script: gradle check
+#   cache:
+#     key: "$CI_COMMIT_REF_NAME"
+#     policy: pull
+#     paths:
+#       - build
+#       - .gradle
+
+docker_build:
+  stage: publish
+  image: docker:latest
+  services:
+    - docker:dind
+  dependencies:
+    - build_latest
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE
+  only:
+    - master
+  when: manual
 
