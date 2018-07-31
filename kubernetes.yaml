@@ -1,6 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
+  annotations:
+    prometheus.io/path: /actuator/prometheus
+    prometheus.io/scrape: "true"
   name: micro1
 spec:
   selector:
@@ -43,29 +46,3 @@ spec:
               name: micro1actuator
       imagePullSecrets: 
         - name: gitlab-reg-cred
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: micro1
-  labels:
-    team: backend
-spec:
-  selector:
-    matchLabels:
-      app: micro1
-  endpoints:
-  - port: micro1actuator
----
-apiVersion: monitoring.coreos.com/v1
-kind: Prometheus
-metadata:
-  name: micro1
-spec:
-  serviceAccountName: prometheus
-  serviceMonitorSelector:
-    matchLabels:
-      team: backend
-  resources:
-    requests:
-      memory: 400Mi

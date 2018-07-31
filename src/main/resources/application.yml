@@ -1,6 +1,4 @@
 management:
-    server:
-        port: 9081
     metrics:
         export:
           prometheus:
