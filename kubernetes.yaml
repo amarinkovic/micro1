@@ -17,7 +17,7 @@ spec:
     port: 9081
     name: micro1actuator
     nodePort: 30003
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,7 +38,7 @@ spec:
       containers:
         - name: micro1
           image: registry.gitlab.com/amarinkovic/micro1:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: micro1app
