@@ -6,8 +6,4 @@ management:
     endpoints:
         web:
             exposure:
-                include:
-                    - prometheus
-                    - metrics
-                    - info
-                    - health
+                include: prometheus, metrics, info, health
