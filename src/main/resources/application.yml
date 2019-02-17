@@ -11,3 +11,4 @@ management:
                     - metrics
                     - info
                     - health
+spring.output.ansi.enabled: ALWAYS
