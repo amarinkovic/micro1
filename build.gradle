@@ -12,6 +12,7 @@ buildscript {
 
 plugins {
   id 'com.google.cloud.tools.jib' version '0.9.4'
+  id 'com.github.ksoichiro.build.info' version '0.2.0'
 }
 
 jib.to.image = 'registry.gitlab.com/amarinkovic/micro1:jib'
@@ -29,12 +30,12 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-actuator'
 	compile 'org.springframework.boot:spring-boot-starter-data-rest'
 
 	runtime 'io.micrometer:micrometer-registry-prometheus'
+	runtime "pl.project13.maven:git-commit-id-plugin:2.2.3"
 
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
