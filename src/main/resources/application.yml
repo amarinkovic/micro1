@@ -6,9 +6,13 @@ management:
     endpoints:
         web:
             exposure:
+<<<<<<< HEAD
                 include:
                     - prometheus
                     - metrics
                     - info
                     - health
 spring.output.ansi.enabled: ALWAYS
+=======
+                include: prometheus, metrics, info, health
+>>>>>>> 2d60b5e890315ff15fa8b88aa8e29cfcd48ef9b2
