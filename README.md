@@ -24,3 +24,10 @@ kubectl create -f kubernetes
 ```
 
 More info in [wiki](https://gitlab.com/amarinkovic/micro1/wikis/home)
+
+### Generate self signed certificate
+
+Run the folowing command
+```shell
+keytool -genkeypair -alias micro1 -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 3650
+```
