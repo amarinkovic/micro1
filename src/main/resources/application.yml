@@ -15,11 +15,13 @@ management:
 
 spring.output.ansi.enabled: ALWAYS
 
-server.port: 8443
-server.port-http: 8080
+server:
+    port: 8443
+    port-http: 8080
+    ssl:
+      key-store-type: PKCS12
+      key-store: "classpath:keystore.p12"
+      key-store-password: micro1
+      key-alias: micro1
 
 security.require-ssl: true
-server.ssl.key-store-type: PKCS12
-server.ssl.key-store: "classpath:keystore.p12"
-server.ssl.key-store-password: micro1
-server.ssl.key-alias: micro1
