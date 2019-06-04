@@ -10,8 +10,8 @@ Build and run the docker image
 
 ```shell
 ./gradlew build
-docker build -t registry.gitlab.com/amarinkovic/micro1 .
-docker run -it -d --name micro1 -p 8080:8080 registry.gitlab.com/amarinkovic/micro1:latest
+docker build -t registry.gitlab.com/amarinkovic/micro1:self-signed .
+docker run -it -d --name micro1 -p 8080:8080 -p 8443:8443 registry.gitlab.com/amarinkovic/micro1:self-signed
 ```
 To build container with jib, use:
 ```shell
