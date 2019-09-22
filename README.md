@@ -23,4 +23,4 @@ Deploy to kubernetes cluster, i.e. minikube:
 kubectl create -f kubernetes
 ```
 
-More info in [wiki](https://gitlab.com/amarinkovic/micro1/wikis/home)
+More info in [Gitlab Wiki](https://gitlab.com/amarinkovic/micro1/wikis/home)
