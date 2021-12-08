@@ -52,4 +52,3 @@ docker_build:
   only:
     - master
   when: manual
-
